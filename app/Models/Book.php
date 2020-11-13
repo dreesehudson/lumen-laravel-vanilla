@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Author;
 
 class Book extends Model
 {
@@ -13,6 +14,13 @@ class Book extends Model
     public $incrementing = true;
     public $timestamps = true;
 
-    $books = App\Models\Book::all();
+    public function Author () {
+        return $this->Book::hasOne('Author');
+    }
+
+    public function Genre () {
+        return $this->Book::hasOne('Genre');
+    }
+
     
 }

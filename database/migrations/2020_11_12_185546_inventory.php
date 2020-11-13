@@ -34,10 +34,6 @@ class Inventory extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('ref_condition_id')
-                ->references('id')
-                ->on('conditions')
-                ->onDelete('cascade');
         });
     }
 

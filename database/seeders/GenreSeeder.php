@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Book;
+use App\Models\Genre;
 
-class BookSeeder extends Seeder
+class GenreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,6 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
-        return Book::factory()->count(10)->create();
-
+        return Genre::factory()->times(10)->create();
     }
 }

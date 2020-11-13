@@ -1,15 +1,20 @@
 <?php
+
 namespace Database\Factories;
-use App\Models\Author;
+
+use App\Models\Genre;
+use Faker\DefaultGenerator;
 use Illuminate\Database\Eloquent\Factories\Factory;
-class AuthorFactory extends Factory
+
+class GenreFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Author::class;
+    protected $model = Genre::class;
+
     /**
      * Define the model's default state.
      *
@@ -18,8 +23,7 @@ class AuthorFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'dob' => $this->faker->date($format = 'Y-m-d', $max = 'now')
+            'name' => $this->faker->word
         ];
     }
 }
