@@ -17,6 +17,7 @@ class Authors extends Migration
             $table->id();
             $table->text('name');
             $table->datetime('dob');
+            $table->timestamps();
            
         });
 

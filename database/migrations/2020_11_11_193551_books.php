@@ -26,15 +26,15 @@ class Books extends Migration
             $table->unsignedBigInteger('ref_genre_id');
             $table->timestamps();
 
-            // $table->foreign('ref_author_id')
-            //     ->references('author_id')
-            //     ->on('authors')
-            //     ->onDelete('cascade');
+            $table->foreign('ref_author_id')
+                ->references('id')
+                ->on('authors')
+                ->onDelete('cascade');
 
-            // $table->foreign('ref_genre_id')
-            //     ->references('genre_id')
-            //     ->on('genres')
-            //     ->onDelete('cascade');
+            $table->foreign('ref_genre_id')
+                ->references('id')
+                ->on('genres')
+                ->onDelete('cascade');
         });
     }
 

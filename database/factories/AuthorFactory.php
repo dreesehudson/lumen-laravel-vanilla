@@ -1,20 +1,17 @@
 <?php
-
 namespace Database\Factories;
-
-use App\Models\User;
-use Faker\DefaultGenerator;
+use App\Models\Author;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
-class UserFactory extends Factory
+use Carbon\Carbon;
+class AuthorFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
-
+    protected $model = Author::class;
     /**
      * Define the model's default state.
      *
@@ -24,8 +21,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => $this->faker->unique()->password(5, 20)
+            'dob' => $this->faker->date($format = 'Y-m-d', $max = 'now')
         ];
     }
 }
