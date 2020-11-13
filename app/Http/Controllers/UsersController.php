@@ -9,8 +9,6 @@ use Validator;
 
 class UsersController extends Controller
 {
-
-
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -33,5 +31,19 @@ class UsersController extends Controller
 
         return response(['data' => $data, 'message' => 'Account created successfully!', 'status' => true]);
     }  
-     
+ 
+    //4 CRUD functions
+    //show
+
+    //create
+
+    //store
+
+    //edit
+
+    //update
+
+    //delete
+
+
 }

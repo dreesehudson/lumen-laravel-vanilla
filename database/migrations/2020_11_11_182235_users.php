@@ -14,16 +14,17 @@ class Users extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->boolean('enabled')->nullable();
+            $table->boolean('banned')->nullable();
             $table->timestamp('last_logged_in')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
