@@ -13,4 +13,12 @@ class Inventory extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
     public $timestamps = true;
+
+    public function Book () {
+        return $this->Inventory::hasOne('Book');
+    }
+
+    public function User () {
+        return $this->Inventory::hasOne('User');
+    }
 }

@@ -19,65 +19,32 @@ $router->get('/', function () use ($router) {
 
 //create each object type
 $router->post('/register','UsersController@register');
-
-$router->post('/createInventory', 'InventoryController@create');
-
-$router->post('/createBook', 'BooksController@create');
-
-$router->post('/createAuthor', 'AuthorsController@create');
-
+$router->post('/User', 'UserController@create');
+$router->post('/Inventory', 'InventoryController@create');
+$router->post('/Book', 'BooksController@create');
+$router->post('/Author', 'AuthorsController@create');
 
 //get list of each object type
-$router->get('/listUsers', 'UsersController@index');
-
-$router->get('/listInventory', 'InventoryController@index');
-
-$router->get('/listBooks', 'BooksController@index');
-
-$router->get('/listAuthors', 'AuthorsController@index');
+$router->get('/Users', 'UsersController@index');
+$router->get('/Inventory', 'InventoryController@index');
+$router->get('/Books', 'BooksController@index');
+$router->get('/Authors', 'AuthorsController@index');
 
 //get a single entry of each object type
-$router->get('/showUsers', 'UsersController@show');
-
-$router->get('/showInventory', 'InventoryController@show');
-
-$router->get('/showBooks', 'BooksController@show');
-
-$router->get('/showAuthors', 'AuthorsController@show');
-
-//store a single entry of each object type
-$router->post('/storeUsers', 'UsersController@store');
-
-$router->post('/storeInventory', 'InventoryController@store');
-
-$router->post('/storeBooks', 'BooksController@store');
-
-$router->post('/storeAuthors', 'AuthorsController@store');
-
-//edit a single entry of each object type
-$router->post('/editUsers', 'UsersController@edit');
-
-$router->post('/editInventory', 'InventoryController@edit');
-
-$router->post('/editBooks', 'BooksController@edit');
-
-$router->post('/editAuthors', 'AuthorsController@edit');
+$router->get('/Users/{id}', 'UsersController@show');
+$router->get('/Inventory/{id}', 'InventoryController@show');
+$router->get('/Books/{id}', 'BooksController@show');
+$router->get('/Authors/{id}', 'AuthorsController@show');
 
 //store the edit of a single entry of each object type
-$router->post('/updateUsers', 'UsersController@update');
-
-$router->post('/updateInventory', 'InventoryController@update');
-
-$router->post('/updateBooks', 'BooksController@update');
-
-$router->post('/updateAuthors', 'AuthorsController@update');
+$router->put('/Users/{id}', 'UsersController@update');
+$router->put('/Inventory/{id}', 'InventoryController@update');
+$router->put('/Books/{id}', 'BooksController@update');
+$router->put('/Authors/{id}', 'AuthorsController@update');
 
 //delete single entry of each object type
-$router->post('/destroyUsers', '   UsersController@destroy');
-
-$router->post('/destroyInventory', 'InventoryController@destroy');
-
-$router->post('/destroyBooks', 'BooksController@destroy');
-
-$router->post('/destroyAuthors', 'AuthorsController@destroy');
+$router->delete('/Users/{id}', '   UsersController@destroy');
+$router->delete('/Inventory/{id}', 'InventoryController@destroy');
+$router->delete('/Books', 'BooksController@destroy');
+$router->delete('/Authors/{id}', 'AuthorsController@destroy');
 

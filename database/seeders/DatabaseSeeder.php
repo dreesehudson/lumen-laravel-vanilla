@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\AuthorSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AuthorSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(BookSeeder::class);
-        // $this->call(InventorySeeder::class);
+        $this->call(InventorySeeder::class);
 
     }
 }

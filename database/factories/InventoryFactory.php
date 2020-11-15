@@ -2,9 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Inventory;
 use Faker\DefaultGenerator;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Inventory;
+use App\Models\Book;
+use App\Models\User;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class InventoryFactory extends Factory
 {
@@ -23,9 +26,8 @@ class InventoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => $this->faker->unique()->password(5, 20)
+            'checked_out' => false,
+            'ref_book_id' => Book::all()->random(1)->first()->id,
         ];
     }
 }

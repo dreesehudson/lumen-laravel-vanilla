@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Books;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -14,7 +14,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        //
+        return Book::all();
     }
 
     /**
@@ -22,78 +22,65 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $book = Books::create();
-        $book->title='the hobbit';
-        $book->isbn='123456787654';
-        $book->pages='233';
-        $book->released='1950-10-20';
-        $book->value='10';
-        $book->cost='10';
-        $book->edition='2';
-
-
+        $book = new Book;
+        $book->title = request('title');
+        $book->isbn = request('isbn');
+        $book->pages = request('pages');
+        $book->released = request('released');
+        $book->value = request('value');
+        $book->cost = request('cost');
+        $book->edition = request('edition');
+        $book->ref_author_id = request('ref_author_id');
+        $book->ref_genre_id = request('ref_genre_id');
+    
         $book->save();
-        return $book;
-
-
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Books  $books
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Books $books)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Books  $books
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Books $books)
-    {
-        //
+        return Book::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Books  $books
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Books $books)
+    public function update($id)
     {
-        //
+        $book = Book::find($id);
+
+        $book->title = request('title');
+        $book->isbn = request('isbn');
+        $book->pages = request('pages');
+        $book->released = request('released');
+        $book->value = request('value');
+        $book->cost = request('cost');
+        $book->edition = request('edition');
+        $book->ref_author_id = request('ref_author_id');
+        $book->ref_genre_id = request('ref_genre_id');
+    
+        $book->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Books  $books
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Books $books)
+    public function destroy(Request $request)
     {
-        //
+        Book::find($request->id)->delete();
     }
 }

@@ -14,7 +14,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        //
+        return Inventory::all();
     }
 
     /**
@@ -22,20 +22,17 @@ class InventoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-    }
+        $inventory = new Inventory;
+        $inventory-> ref_book_id = request('ref_book_id');
+        $inventory-> checked_out = request('checked_out')->default(false);
+        $inventory-> check_out_date = request('checkout_date')->nullable();
+        $inventory-> due_date = request('due_date')->nullable();
+        $inventory-> notes = request('notes')->nullable();
+        $inventory-> ref_user_id = request('ref_user_id')->nullable();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $inventory->save();
     }
 
     /**
@@ -44,9 +41,9 @@ class InventoryController extends Controller
      * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventory $inventory)
+    public function show($id)
     {
-        //
+        return Inventory::find($id);
     }
 
     /**
@@ -67,9 +64,17 @@ class InventoryController extends Controller
      * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventory $inventory)
+    public function update(Inventory $id)
     {
-        //
+        $inventory = Inventory::find($id);
+        $inventory-> ref_book_id = request('ref_book_id');
+        $inventory-> checked_out = request('checked_out')->default(false);
+        $inventory-> check_out_date = request('checkout_date')->nullable();
+        $inventory-> due_date = request('due_date')->nullable();
+        $inventory-> notes = request('notes')->nullable();
+        $inventory-> ref_user_id = request('ref_user_id')->nullable();
+
+        $inventory->save();
     }
 
     /**
@@ -80,6 +85,6 @@ class InventoryController extends Controller
      */
     public function destroy(Inventory $inventory)
     {
-        //
+        Inventory::find($inventory->id)->delete();
     }
 }

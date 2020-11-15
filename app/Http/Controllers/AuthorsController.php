@@ -14,7 +14,7 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
+        return Author::all();
     }
 
     /**
@@ -22,20 +22,14 @@ class AuthorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-    }
+        $author = new Author;
+        $author-> name = request('name');
+        $author-> dob = request('dob');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $author->save();
+       
     }
 
     /**
@@ -44,20 +38,9 @@ class AuthorsController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show(Author $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Author  $author
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Author $author)
-    {
-        //
+        return Author::find($id);
     }
 
     /**
@@ -67,9 +50,13 @@ class AuthorsController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, Author $id)
     {
-        //
+        $author = Author::find($id);
+        $author-> name = request('name');
+        $author-> dob = request('dob');
+
+        $author->save();
     }
 
     /**
@@ -80,6 +67,6 @@ class AuthorsController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        Author::find($author->id)->delete();
     }
 }

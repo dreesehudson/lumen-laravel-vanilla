@@ -24,4 +24,76 @@ class UserController extends Controller
         $data['name'] =  $user->name;
         return response(['data' => $data, 'message' => 'Account created successfully!', 'status' => true]);
     }  
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return User::all();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $user = new User;
+        $user-> name = request('name');
+        $user-> email = request('email');
+        $user-> password = request('password');
+        $user-> enabled = request('enabled');
+        $user-> banned = request('banned');
+        $user-> last_logged_in = request('last_logged_in');
+        $user-> email_verified_at = request('email_verified_at');
+
+        $user->save();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $id)
+    {
+        return User::find($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $id)
+    {
+        $user = User::find('$id');
+        $user-> name = request('name');
+        $user-> email = request('email');
+        $user-> password = request('password');
+        $user-> enabled = request('enabled');
+        $user-> banned = request('banned');
+        $user-> last_logged_in = request('last_logged_in');
+        $user-> email_verified_at = request('email_verified_at');
+
+        $user->save();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        User::find($user->id)->delete();
+    }
 }

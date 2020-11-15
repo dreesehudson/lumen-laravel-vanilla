@@ -16,13 +16,12 @@ class Inventory extends Migration
         Schema::create('inventory', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('ref_book_id');
-            $table->text('copy_number');
-            $table->boolean('checked_out');
-            $table->unsignedBigInteger('ref_user_id');
-            $table->datetime('checkout_date');
-            $table->datetime('due_date');
-            $table->unsignedBigInteger('ref_condition_id');
-            $table->text('notes');
+            $table->boolean('checked_out')->default(false);
+            $table->datetime('checkout_date')->nullable();
+            $table->datetime('due_date')->nullable();
+            $table->text('notes')->nullable();
+            $table->unsignedBigInteger('ref_user_id')->nullable();
+            $table->timestamps ();
 
             $table->foreign('ref_book_id')
                 ->references('id')

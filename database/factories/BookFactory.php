@@ -25,8 +25,8 @@ class BookFactory extends Factory
             'isbn' => $this->faker->isbn13,        
             'pages' => $this->faker->numberBetween($min = 50, $max = 405),
             'released' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'value' => 10.00,
-            'cost' => 10.00,
+            'value' => $this->faker->numberBetween($min = 5, $max = 29),
+            'cost' => $this->faker->numberBetween($min = 5, $max = 29),
             'edition' => $this->faker->numberBetween($min = 1, $max = 10),
             'ref_author_id' => Author::all()->random(1)->first()->id,
             'ref_genre_id' => Genre::all()->random(1)->first()->id
